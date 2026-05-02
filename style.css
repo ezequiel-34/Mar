@@ -1,9 +1,27 @@
 body {
   margin: 0;
   font-family: Arial;
-  background: #111;
+  overflow: hidden;
+  background: radial-gradient(circle, #1a1a1a, #000);
 }
 
+/* FONDO CON PARTÍCULAS */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png");
+  opacity: 0.2;
+  animation: moveBg 20s linear infinite;
+}
+
+@keyframes moveBg {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* PANTALLA INICIAL */
 .start {
   position: fixed;
   width: 100%;
@@ -14,43 +32,92 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 10;
+  font-size: 22px;
 }
 
+/* LIBRO */
 .book {
   display: none;
   height: 100vh;
-  padding: 10px;
-}
-
-.spread {
-  display: none;
-  height: 100%;
-  background: #fff0f5;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.spread.active {
-  display: flex;
-}
-
-.page {
-  width: 50%;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* HOJA DOBLE */
+.spread {
+  display: none;
+  width: 95%;
+  height: 85%;
+  background: #fff0f5;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 30px rgba(255, 100, 150, 0.4);
+}
+
+/* ACTIVA */
+.spread.active {
+  display: flex;
+  animation: fade 0.5s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* PÁGINAS */
+.page {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* BORDE DE HOJA */
+.page::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 2px;
+  height: 80%;
+  background: rgba(0,0,0,0.1);
+}
+
+/* TEXTO */
 .text {
-  padding: 15px;
+  padding: 20px;
   text-align: center;
+  font-size: 18px;
 }
 
+/* IMAGEN */
 img {
-  width: 90%;
-  border-radius: 10px;
+  width: 85%;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
+/* ESPIRAL MÁS REAL */
+.spread::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 100%;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    #fff,
+    #fff 8px,
+    #ff99aa 8px,
+    #ff99aa 16px
+  );
+}
+
+/* BOTONES */
 .controls {
   position: fixed;
   bottom: 20px;
@@ -61,8 +128,10 @@ img {
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
-  background: pink;
-  border-radius: 10px;
+  background: #ff4d6d;
+  color: white;
+  border-radius: 12px;
+  font-size: 18px;
 }
