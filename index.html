@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="start" onclick="iniciar()">Tocar para abrir 📖</div>
+
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="book" id="book">
+
+  <div class="spread active">
+    <div class="page text">
+      Te extraño y quiero que me perdones, sé que soy un pelotudo... pero lo que te dije era mentira 💔
+    </div>
+    <div class="page">
+      <img src="Foto1.jpg">
+    </div>
+  </div>
+
+  <div class="spread">
+    <div class="page">
+      <img src="Foto2.jpg">
+    </div>
+    <div class="page text">
+      Te conozco desde los 5 años y nunca nos separamos ♥️
+    </div>
+  </div>
+
+  <div class="spread">
+    <div class="page text">
+      Perdón por todo... te quiero mucho brother 🥺
+    </div>
+    <div class="page">
+      <img src="Foto3.jpg">
+    </div>
+  </div>
+
+  <div class="spread">
+    <div class="page">
+      <img src="Foto4.jpg">
+    </div>
+    <div class="page text">
+      Admiro lo fuerte que sos 💖
+    </div>
+  </div>
+
+</div>
+
+<div class="controls">
+  <button onclick="prev()">⬅</button>
+  <button onclick="next()">➡</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
